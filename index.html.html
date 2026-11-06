@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111827">
+    <meta name="description" content="LUNA — An intelligent AI chatbot that answers questions across science, coding, math, history, and more. Developed by Mr. Aniket Ghosh.">
+    <meta name="author" content="Mr. Aniket Ghosh">
+    <meta name="keywords" content="LUNA, LUNA AI, Universal AI Assistant, Aniket Ghosh, ghoshaniket11, AI Chatbot, Google Gemini">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ghoshaniket11.web.app/">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ghoshaniket11.web.app/">
+    <meta property="og:title" content="LUNA — Universal AI Assistant | Developed by Mr. Aniket Ghosh">
+    <meta property="og:description" content="Ask anything across coding, mathematics, science, history, writing, and world knowledge.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LUNA — Universal AI Assistant">
+    <meta name="twitter:description" content="Ask anything across coding, math, science, and history. Developed by Mr. Aniket Ghosh.">
+
+    <title>LUNA — Universal AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#" aria-label="LUNA home">
+          <span class="brand-mark" aria-hidden="true">L</span>
+          <span>LUN<span class="brand-accent">A</span></span>
+        </a>
+
+        <button class="new-chat-button" id="new-chat-button" type="button" title="Start a fresh chat (Ctrl+K)">
+          <span aria-hidden="true">＋</span> New chat
+          <span class="shortcut">Ctrl K</span>
+        </button>
+
+        <div class="sidebar-label">YOUR CONVERSATIONS</div>
+        <div class="sidebar-chat-list" id="sidebar-chat-list" role="list"></div>
+        <div class="sidebar-empty" id="sidebar-empty">
+          <span class="sidebar-empty-icon" aria-hidden="true">◷</span>
+          <p>Your conversations will appear here.</p>
+        </div>
+
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-note">
+          <span class="note-icon" aria-hidden="true">✦</span>
+          <p>Ready to answer any question. Free AI enabled by default.</p>
+        </div>
+        <button class="sidebar-settings" id="sidebar-settings-button" type="button">
+          <span aria-hidden="true">⚙</span> AI Settings
+          <span class="settings-status" id="settings-status">⚡ Google Gemini</span>
+        </button>
+      </aside>
+
+      <!-- Main Panel -->
+      <main class="main-panel">
+        <header class="topbar">
+          <button class="mobile-brand" id="mobile-new-chat-button" type="button" aria-label="Start a new chat">
+            <span class="brand-mark" aria-hidden="true">L</span>
+            <span>LUN<span class="brand-accent">A</span></span>
+          </button>
+          <div class="topbar-caption">
+            <span class="status-dot"></span>
+            <span>Universal AI Assistant</span>
+            <button class="badge-button" id="model-badge" title="Click to change AI provider">⚡ Gemini 3.5 Flash</button>
+          </div>
+          <button class="topbar-settings" id="topbar-settings-button" type="button" aria-label="Open AI settings">
+            <span aria-hidden="true">⚙</span><span class="topbar-settings-label">Settings</span>
+          </button>
+        </header>
+
+        <section class="conversation" id="conversation" aria-live="polite" aria-label="Conversation">
+          <!-- Welcome Screen with Topic Suggestions -->
+          <div class="welcome" id="welcome">
+            <div class="welcome-orbit" aria-hidden="true">
+              <span class="orbit-star star-one">✦</span>
+              <span class="orbit-star star-two">✧</span>
+              <span class="orbit-star star-three">·</span>
+              <div class="globe">
+                <span class="globe-latitude"></span>
+                <span class="globe-longitude"></span>
+                <span class="globe-shine"></span>
+              </div>
+            </div>
+            <p class="eyebrow">UNIVERSAL AI ASSISTANT</p>
+            <h1>Ask anything.<br><span>Get instant answers.</span></h1>
+            <p class="welcome-description">Ask any question across coding, mathematics, science, history, writing, advice, and world knowledge.</p>
+            
+            <div class="topic-grid" aria-label="Try asking about">
+              <button class="topic-card" type="button" data-prompt="Write a Python function to sort a list using quicksort and explain how it works.">
+                <span class="topic-icon code-icon" aria-hidden="true">💻</span>
+                <span><strong>Coding &amp; Tech</strong><small>Python, JS, algorithms, web dev</small></span>
+                <span class="topic-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="topic-card" type="button" data-prompt="Solve 3x + 15 = 45 and explain each step clearly.">
+                <span class="topic-icon math-icon" aria-hidden="true">🧮</span>
+                <span><strong>Math &amp; Logic</strong><small>Equations, arithmetic, reasoning</small></span>
+                <span class="topic-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="topic-card" type="button" data-prompt="How do black holes form, and what happens at the event horizon?">
+                <span class="topic-icon space-icon" aria-hidden="true">✧</span>
+                <span><strong>Space &amp; Science</strong><small>Physics, chemistry, astronomy</small></span>
+                <span class="topic-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="topic-card" type="button" data-prompt="What were the main causes of the fall of the Western Roman Empire?">
+                <span class="topic-icon history-icon" aria-hidden="true">⌛</span>
+                <span><strong>History &amp; Culture</strong><small>Civilizations, events, leaders</small></span>
+                <span class="topic-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="topic-card" type="button" data-prompt="Write a professional and polite email requesting an extension for project submission.">
+                <span class="topic-icon write-icon" aria-hidden="true">✍️</span>
+                <span><strong>Writing &amp; Tasks</strong><small>Emails, essays, summaries, advice</small></span>
+                <span class="topic-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="topic-card" type="button" data-prompt="What are the seven wonders of the world, and where are they located?">
+                <span class="topic-icon earth-icon" aria-hidden="true">◎</span>
+                <span><strong>Earth &amp; Geography</strong><small>Countries, capitals, nature</small></span>
+                <span class="topic-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Messages Container -->
+          <div class="messages" id="messages"></div>
+        </section>
+
+        <!-- Composer Input Area -->
+        <footer class="composer-area">
+          <form class="composer" id="chat-form">
+            <label class="sr-only" for="message-input">Ask LUNA anything</label>
+            <textarea id="message-input" rows="1" placeholder="Ask any question (e.g. coding, math, science, history, daily life)..." maxlength="12000"></textarea>
+            <div class="composer-bottom">
+              <span class="composer-hint"><span aria-hidden="true">✦</span> Ready to answer any question</span>
+              <div class="composer-actions">
+                <button class="mic-button" id="mic-button" type="button" aria-label="Voice input (dictation)" title="Click to speak">
+                  <span aria-hidden="true">🎙</span>
+                </button>
+                <span class="key-hint">Enter to send · Shift+Enter newline</span>
+                <button class="send-button" id="send-button" type="submit" aria-label="Send message" disabled>
+                  <span aria-hidden="true">↑</span>
+                </button>
+              </div>
+            </div>
+          </form>
+          <p class="disclaimer">LUNA answers any question. Verify critical information with official sources.</p>
+          <p class="developer-credit">Developed by Mr. Aniket Ghosh</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- AI Settings Dialog -->
+    <dialog class="settings-dialog" id="settings-dialog" aria-labelledby="settings-title">
+      <form class="settings-form" id="settings-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">AI MODEL CONFIGURATION</p>
+            <h2 id="settings-title">AI Provider &amp; Model</h2>
+          </div>
+          <button class="close-dialog" id="close-settings-button" type="button" aria-label="Close settings">×</button>
+        </div>
+        <p class="settings-description">Select your AI provider. LUNA works completely free out-of-the-box without requiring any API key, or you can connect Google Gemini, OpenAI, Groq, or Ollama.</p>
+
+        <label for="provider-select">Choose AI Provider</label>
+        <select id="provider-select" name="provider-select" class="settings-select">
+          <option value="gemini" selected>⚡ Google Gemini (Gemini 3.5 Flash)</option>
+          <option value="free">🌟 Free Built-in AI (Instant, No API key needed)</option>
+          <option value="openai">🟢 OpenAI ChatGPT (GPT-4o / GPT-4o-mini)</option>
+          <option value="groq">🚀 Groq Cloud (Ultra-fast Llama-3.3)</option>
+          <option value="ollama">🦙 Ollama (100% Local on your PC)</option>
+          <option value="custom">⚙️ Custom OpenAI-compatible Endpoint</option>
+        </select>
+
+        <div id="api-key-group">
+          <label for="api-key" id="api-key-label">API Key</label>
+          <input id="api-key" name="api-key" type="password" placeholder="Enter API key" autocomplete="off" spellcheck="false">
+          <small class="provider-help" id="provider-help"></small>
+        </div>
+
+        <div id="endpoint-group">
+          <label for="api-endpoint">API Endpoint URL</label>
+          <input id="api-endpoint" name="api-endpoint" type="url" placeholder="https://generativelanguage.googleapis.com/v1beta" value="https://generativelanguage.googleapis.com/v1beta">
+        </div>
+
+        <div id="model-group">
+          <label for="model-name">Model Name</label>
+          <input id="model-name" name="model-name" type="text" placeholder="gemini-3.5-flash" value="gemini-3.5-flash">
+        </div>
+
+        <p class="settings-warning" id="settings-note"><span aria-hidden="true">ⓘ</span> In Free AI mode, questions are answered instantly with zero setup. If using API keys, keys stay in your browser.</p>
+        <p class="settings-error" id="settings-error" role="alert"></p>
+
+        <div class="dialog-actions">
+          <button class="clear-key-button" id="clear-key-button" type="button">Reset to Free AI</button>
+          <button class="save-settings-button" type="submit">Save settings <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
